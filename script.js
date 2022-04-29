@@ -28,7 +28,25 @@ function onMapClick(e) {
     
 	axios.get(url).then(response => {     
     	let data = response["data"]; // geojson形式の地震情報
-    	let mesh = L.geoJSON(data).on('click', onMeshClick).addTo(map);
+    	let mesh = L.geoJSON(data, {
+			style: function(feature){
+				let mesh_style;
+				mesh_style = {
+					color: "#ff0000", // 枠線の色
+					fillColor: "#ff0000" // 塗りつぶしの色
+        		}
+				return mesh_style;
+			}
+		// }).on('click', onMeshClick).addTo(map);
+		}).on('click', onMeshClick);
+		// メッシュコード
+		let meshcode = response["data"]["features"][0]["properties"]["meshcode"]
+		// 30年間で震度5強以上となる確率
+		let prob = Number(response["data"]["features"][0]["properties"][attr])
+		mesh.bindTooltip(
+			`<p>メッシュコード: ${meshcode} <br> 発生確率: ${prob * 100}%</p>`
+		);
+		mesh.addTo(map);
 		// メッシュを地図に追加＋追加したメッシュのクリックイベント処理を追加
 	});
   }
