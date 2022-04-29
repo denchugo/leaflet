@@ -20,26 +20,22 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 map.on('click', onMapClick);
 
 function onMapClick(e) {
-	//地図のclickイベント呼び出される
-	//クリック地点の座標にマーカーを追加、マーカーのclickイベントでonMarkerClick関数を呼び出し
-	// var mk = L.marker(e.latlng).on('click', onMarkerClick).addTo(map);
-	
-	let lat = e.latlng.lat;
-	let lon = e.latlng.lng;
+	let lat = e.latlng.lat;	//クリックされた経度
+	let lon = e.latlng.lng;	//クリックされた緯度
 	let position = `${lon},${lat}`;
 	let url = `https://www.j-shis.bosai.go.jp/map/api/pshm/${version}/${eqcase}/${eqcode}/meshinfo.${format}?
-				position=${position}&epsg=${epsg}&attr=${attr}`;
+				position=${position}&epsg=${epsg}&attr=${attr}`;	//地震メッシュを取得するURL
     
 	axios.get(url).then(response => {     
     	let data = response["data"]; // geojson形式の地震情報
-    	// let mesh = L.geoJSON(data, {
-    	let mesh = L.geoJSON(data).on('click', onMarkerClick).addTo(map);
-		// mesh.addTo(map); // メッシュを地図に追加
+    	let mesh = L.geoJSON(data).on('click', onMeshClick).addTo(map);
+		// メッシュを地図に追加＋追加したメッシュのクリックイベント処理を追加
 	});
   }
 
-  function onMarkerClick(e) {
-	//マーカーのclickイベント呼び出される
-	//クリックされたマーカーを地図のレイヤから削除する
-	map.removeLayer(e.target);
+  function onMeshClick(e) {
+	//メッシュのclickイベント呼び出される
+	//クリックされたメッシュを地図のレイヤから削除する
+	map.removeLayer(e.target);	//メッシュを削除
+	map.off(mesh);
   }
