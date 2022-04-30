@@ -28,14 +28,48 @@ function onMapClick(e) {
     
 	axios.get(url).then(response => {     
     	let data = response["data"]; // geojson形式の地震情報
-    	let mesh = L.geoJSON(data).on('click', onMeshClick).addTo(map);
+		// メッシュコード
+		let meshcode = response["data"]["features"][0]["properties"]["meshcode"]
+		// 30年間で震度5強以上となる確率
+		let prob = Number(response["data"]["features"][0]["properties"][attr])
+
+    	let mesh = L.geoJSON(data, {
+			style: setMeshStyle(prob)
+		}).on('click', onMeshClick);
+		mesh.bindTooltip(
+			`<p>メッシュコード: ${meshcode} <br> 発生確率: ${prob * 100}%</p>`
+		);
+		mesh.addTo(map);
 		// メッシュを地図に追加＋追加したメッシュのクリックイベント処理を追加
 	});
-  }
+}
 
-  function onMeshClick(e) {
+function onMeshClick(e) {
 	//メッシュのclickイベント呼び出される
 	//クリックされたメッシュを地図のレイヤから削除する
 	map.removeLayer(e.target);	//メッシュを削除
 	map.off(mesh);
-  }
+}
+
+function setMeshStyle(prob){
+	let meshColor;
+	const gradation = {
+		20:"#ffaaaa",
+		40:"#ff5555",
+		60:"#ff0000",
+		80:"#aa0000",
+		100:"#550000"
+	};
+	for(let key in gradation) {
+		if((prob * 100) <= key){
+			meshColor = gradation[key];
+			break;
+		}
+	}
+	let mesh_style;
+	mesh_style = {
+		color: meshColor, // 枠線の色
+		fillColor: meshColor // 塗りつぶしの色
+	}
+	return mesh_style;
+}
