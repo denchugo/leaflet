@@ -1,17 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="ja" >
 <head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta charset="UTF-8">
-  <title>Leafletで地震情報の可視化</title>
-  <link rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css'><link rel="stylesheet" href="./style.css">
-
+  <title>30年間で震度５以上の地震が発生する確率を可視化する</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css'>
 </head>
+
 <body>
-<!-- partial:index.partial.html -->
-<div id="map"></div>
+  <div class="base" id="top"><!-- ページレイアウト -->
+    <div class="header"><!-- ヘッダー -->
+      <h1><a href="index.html">３０年間で震度５強以上の地震が発生する確率を可視化する</a></h1>
+      <h2>地震ハザードステーション　J-SHIS　から取得した地震情報を可視化する。</h2>
+    </div><!-- ヘッダー：終わり -->
+    
+    <div class="box"><!-- ボックス格納 -->
+    
+      <div id="map"></div>
+      <div class="memo">
+        .memo<br>
+        Web Mapのライブラリ:Leaflet<br>
+        HTTP Client:Axios<br>
+      </div>
+    
+    </div><!-- ボックス格納：終わり -->
+  
+    <div class="footer"><!-- フッター -->
+      <address>
+        <cite>designed by <a href="https://fc.ashrose.net/" target="_top">flower&amp;clover</a></cite>
+      </address>
+    </div><!-- フッター：終わり -->
+  </div><!-- ページレイアウト：終わり -->
+  
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js'></script><script  src="./script.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js'></script>
+  <script  src="./script.js"></script>
 
 </body>
 </html>
