@@ -52,22 +52,12 @@ function onMeshClick(e) {
 }
 
 function setMeshStyle(prob){
-	let meshColor;
-	const gradation = {
-		20:"#ffaaaa",
-		40:"#ff5555",
-		60:"#ff0000",
-		80:"#aa0000",
-		100:"#550000"
-	};
-	for(let key in gradation) {
-		if((prob * 100) <= key){
-			meshColor = gradation[key];
-			break;
-		}
-	}
-	let mesh_style;
-	mesh_style = {
+	let meshColor =	prob <= 0.2 ? '#ffaaaa' :
+					prob <= 0.4 ? '#ff5555' :
+					prob <= 0.6 ? '#ff0000' :
+					prob <= 0.8 ? '#aa0000' :
+								'#550000'; 
+	let mesh_style = {
 		color: meshColor, // 枠線の色
 		fillColor: meshColor // 塗りつぶしの色
 	}
