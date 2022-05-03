@@ -28,10 +28,8 @@ function onMapClick(e) {
     
 	axios.get(url).then(response => {     
     	let data = response["data"]; // geojson形式の地震情報
-		// メッシュコード
-		let meshcode = response["data"]["features"][0]["properties"]["meshcode"]
-		// 30年間で震度5強以上となる確率
-		let prob = Number(response["data"]["features"][0]["properties"][attr])
+		let meshcode = response["data"]["features"][0]["properties"]["meshcode"];	// メッシュコード
+		let prob = Number(response["data"]["features"][0]["properties"][attr]);	//震度の確率
 
     	let mesh = L.geoJSON(data, {
 			style: setMeshStyle(prob)
