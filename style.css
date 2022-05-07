@@ -368,7 +368,11 @@ cite{
     opacity: 0.7 ;
 }
 
-
+.leaflet-tooltip.my-labels{
+    background-color: #fff;
+    border: transparent;
+    box-shadow: none;
+}
 /*↓ディスプレイ580px以下用↓*/
 
 @media screen and (max-width:580px) 
