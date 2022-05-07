@@ -2,7 +2,6 @@ let lat = 34.966005; // 緯度
 let lon = 136.166626; // 経度
 let zoom = 16; // ズームレベル
 
-<<<<<<< HEAD
 let version = 'Y2020'; //地図バージョン
 let eqcase = 'AVR'; // 確率ケース
 let eqcode = 'TTL_MTTL'; //地震コード
@@ -21,13 +20,6 @@ L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
 // L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg', {
 // 	attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
 // 	}).addTo(map);
-=======
-let map = L.map("map");
-map.setView([lat, lon], zoom);
-L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-	attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
-	}).addTo(map);
->>>>>>> parent of 2fb5d09 (Merge branch 'master' of https://github.com/denchugo/leaflet2)
 	map.on('click', onMapClick);
 
 function onMapClick(e) {
