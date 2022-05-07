@@ -40,33 +40,12 @@ body{
     text-align:center;
 }
 
-.work{
-    padding:10px;
-    margin:0 auto;
-    max-width:1000px;
-}
-
-.menu{
-    margin:20px 0px;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    font-family: 'Della Respira', serif;
-    font-size:110%;
-}
-
 .box{
     margin:0px 5px;
     background-color:#fff;
     padding:10px 10px;
     box-shadow: 3px 3px 4px -1px #999;
     height:100%;
-}
-
-.text{
-    margin:5px 0px;
-    padding:10px;
-    line-height:180%;
 }
 
 img
@@ -88,63 +67,6 @@ h2{
     font-weight:normal;
     margin:10px;
     color:#5a88bf;
-}
-
-h3{
-    font-size:140%;
-    font-weight:normal;
-    text-align:center;
-    margin:15px 0px;
-    font-family: 'Della Respira', serif;
-}
-
-h3 span {
-  display:block;
-  margin-top:0px;
-  color:#5a88bf;
-  font-size:60%;
-}
-
-h4{
-    font-size:120%;
-    font-weight:normal;
-    margin:15px 0px;
-    font-family: 'Della Respira', serif;
-    border-width:0px 0px 1px 0px;
-    border-style:solid;
-    border-color:#bbb;
-}
-
-h4:first-letter {
-  font-size: 130%;
-    color:#a4bddb;
-}
-
-h5{
-    font-size:120%;
-    font-weight:normal;
-    margin:15px 0px;
-    font-family: 'Della Respira', serif;
-    border-width:0px 0px 3px 0px;
-    border-style:double;
-    text-align:right;
-    border-color:#bbb;
-}
-
-h5:first-letter {
-    font-size: 130%;
-    color:#a4bddb;
-}
-
-h6{
-    font-size:120%;
-    font-weight:normal;
-    margin:15px 0px;
-    font-family: 'Della Respira', serif;
-    border-width:0px 0px 0px 5px;
-    border-style:solid;
-    padding-left:10px;
-    border-color:#a4bddb;
 }
 
 p{
@@ -265,76 +187,6 @@ cite{
 
 /* ↓classタグ↓ */
 
-.item{
-    text-align:center;
-    margin:5px;
-    padding:5px;
-}
-
-.list1{
-    list-style-type:circle;
-}
-
-.list2{
-    list-style-type:upper-roman;
-}
-
-.hr1{
-    margin:5px 0px;
-    border-top: 1px #ccc;
-    border-bottom: 1px #fff;
-    border-style:solid;
-}
-
-.hr2{
-    margin:5px 0px;
-    border-top: 1px #aaa;
-    border-style:dashed;
-}
-
-.hr3{
-    margin:5px 0px;
-    height:50px;
-    border-width:0px;
-}
-
-.p1{
-    background-color:#edf2f8;
-}
-
-.p2{
-    border-style:double;
-    border-width:3px;
-    border-color:#a4bddb;
-}
-
-.p3{
-    border-style:dashed;
-    border-width:1px;
-    border-color:#a4bddb;
-}
-
-.dl1{
-}
-
-.dt1{
-    font-weight:bold;
-}
-
-.dt2{
-    background-color:#eae8e1;
-    font-size:90%;
-    padding:3px 5px;
-}
-
-.dd1{
-    font-size:90%;
-    border-style:dashed;
-    border-width:0px 0px 1px 0px;
-    margin:5px;
-    border-color:#ccc;
-}
-
 .memo{
     background-color:#a4bddb;
     font-size:90%;
@@ -344,30 +196,6 @@ cite{
     margin:5px 5px;
     color:#fff;
 }
-
-.img1{
-    box-shadow:1px 1px 3px -1px #888;
-}
-
-.counter{
-    font-family:,Arial;
-}
-
-.pagetop{
-    position: fixed;
-    bottom: 10px;
-    right: 14px;
-}
- 
-.pagetop a{
-    display: block;
-    text-decoration: none;
-}
- 
-.pagetop:hover{
-    opacity: 0.7 ;
-}
-
 
 /*↓ディスプレイ580px以下用↓*/
 
@@ -392,6 +220,8 @@ cite{
 
 .menu{
     font-size:90%;
+<<<<<<< HEAD
 }
-
+=======
 }
+>>>>>>> 6691bc0454a7c466c7c82e636eb9938e819d0b69
