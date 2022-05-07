@@ -38,7 +38,8 @@ function onMapClick(e) {
 			style: setMeshStyle(prob)
 		}).on('click', onMeshClick);
 		mesh.bindTooltip(
-			`<p>メッシュコード: ${meshcode} <br> 発生確率: ${Math.round(prob * 100)}%</p>`
+			`<p>MeshCode: ${meshcode} <br> 発生確率: ${Math.round(prob * 100)}%</p>`,
+			{permanent: true, direction: "center",opacity:0.7, className: "my-labels"}
 		);
 		mesh.addTo(map);
 		// メッシュを地図に追加＋追加したメッシュのクリックイベント処理を追加
