@@ -17,10 +17,7 @@ map.setView([lat, lon], zoom);
 L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
 	attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
 	}).addTo(map);
-// L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg', {
-// 	attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
-// 	}).addTo(map);
-	map.on('click', onMapClick);
+map.on('click', onMapClick);
 
 function onMapClick(e) {
 	let lat = e.latlng.lat;	//クリックされた経度
@@ -34,12 +31,11 @@ function onMapClick(e) {
 		let meshcode = response["data"]["features"][0]["properties"]["meshcode"];	// メッシュコード
 		let prob = Number(response["data"]["features"][0]["properties"][attr]);	//震度の確率
 
-    	let mesh = L.geoJSON(data, {
-			style: setMeshStyle(prob)
-		}).on('click', onMeshClick);
+    	let mesh = L.geoJSON(data, {style: setMeshStyle(prob)}).on('click', onMeshClick);
+		
 		mesh.bindTooltip(
 			`<p>MeshCode: ${meshcode} <br> 発生確率: ${Math.round(prob * 100)}%</p>`,
-			{permanent:true});
+			{permanent:true, direction:'center'});
 		mesh.addTo(map);
 		// メッシュを地図に追加＋追加したメッシュのクリックイベント処理を追加
 	});
@@ -48,8 +44,8 @@ function onMapClick(e) {
 function onMeshClick(e) {
 	//メッシュのclickイベント呼び出される
 	//クリックされたメッシュを地図のレイヤから削除する
-	map.removeLayer(e.target);	//メッシュを削除
-	map.off(mesh);
+	map.removeLayer(e.target);
+	L.DomEvent.stop(e);
 }
 
 function setMeshStyle(prob){
